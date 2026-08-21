@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Whitey's Diner"
+description = "A warm, nostalgic single-page website for Whitey's Diner in Fremont, Ohio, showcasing its breakfast menu, 45-year history, diner atmosphere, and visit details."
+version = "1.0.0"
+id = "artifacts/whiteys-diner"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21003
+
+[services.development]
+run = "pnpm --filter @workspace/whiteys-diner run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/whiteys-diner", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/whiteys-diner/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21003"
+BASE_PATH = "/"
