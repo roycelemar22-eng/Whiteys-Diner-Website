@@ -90,6 +90,62 @@ function Nav() {
   );
 }
 
+function OriginalHeroArtwork() {
+  return (
+    <div className="hero-art reveal reveal-delay-2" data-testid="photo-hero-sign">
+      <div className="hero-art-inner">
+        <svg viewBox="0 0 640 480" role="img" aria-label="Whitey's Diner illustrated sign">
+          <defs>
+            <linearGradient id="art-sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#FFFDF6" />
+              <stop offset="1" stopColor="#FFF1C4" />
+            </linearGradient>
+            <linearGradient id="art-chrome" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#FFFFFF" />
+              <stop offset=".45" stopColor="#D8D4C9" />
+              <stop offset=".55" stopColor="#F2F0EA" />
+              <stop offset="1" stopColor="#B9B4A8" />
+            </linearGradient>
+          </defs>
+          <rect width="640" height="480" fill="url(#art-sky)" />
+          <path d="M0 84 C150 34 420 32 640 68 L640 236 C420 204 150 206 0 254 Z" fill="#F7C815" />
+          <path d="M0 84 C150 34 420 32 640 68 L640 84 C420 48 150 50 0 100 Z" fill="#1A1713" opacity=".85" />
+          <path d="M0 238 C150 190 420 188 640 220 L640 236 C420 204 150 206 0 254 Z" fill="#1A1713" opacity=".85" />
+          <text x="320" y="158" textAnchor="middle" fontFamily="Alfa Slab One, Georgia, serif" fontSize="50" fill="#1A1713" letterSpacing="2">WHITEY&apos;S</text>
+          <text x="320" y="212" textAnchor="middle" fontFamily="Alfa Slab One, Georgia, serif" fontSize="50" fill="#1A1713" letterSpacing="2">DINER</text>
+          <rect x="0" y="330" width="640" height="26" fill="url(#art-chrome)" />
+          <rect x="0" y="356" width="640" height="124" fill="#FFF8E6" />
+          <g stroke="#E4DCC4" strokeWidth="2">
+            <path d="M60 356 V480" /><path d="M180 356 V480" /><path d="M300 356 V480" /><path d="M420 356 V480" /><path d="M540 356 V480" />
+          </g>
+          <g transform="translate(78,236)">
+            <path d="M8 60 C8 30 12 26 20 26 L84 26 C92 26 96 30 96 60 C96 82 84 94 52 94 C20 94 8 82 8 60 Z" fill="#FFFDF6" stroke="#1A1713" strokeWidth="5" />
+            <path d="M96 40 C122 36 128 74 96 74" fill="none" stroke="#1A1713" strokeWidth="5" />
+            <rect x="4" y="26" width="96" height="12" rx="4" fill="#C8322B" />
+            <path d="M34 14 C40 4 28 2 34 -8 M62 14 C68 4 56 2 62 -8" fill="none" stroke="#C8A94B" strokeWidth="4" strokeLinecap="round" opacity=".75" />
+          </g>
+          <g transform="translate(230,244)">
+            <ellipse cx="120" cy="70" rx="118" ry="42" fill="#FFFDF6" stroke="#1A1713" strokeWidth="5" />
+            <ellipse cx="120" cy="66" rx="96" ry="32" fill="#FFF8E6" stroke="#E4DCC4" strokeWidth="3" />
+            <ellipse cx="82" cy="60" rx="40" ry="24" fill="#FFFFFF" stroke="#1A1713" strokeWidth="4" />
+            <circle cx="82" cy="58" r="13" fill="#F7C815" stroke="#E0A800" strokeWidth="3" />
+            <ellipse cx="150" cy="64" rx="36" ry="21" fill="#FFFFFF" stroke="#1A1713" strokeWidth="4" />
+            <circle cx="150" cy="62" r="11" fill="#F7C815" stroke="#E0A800" strokeWidth="3" />
+            <path d="M176 44 C196 34 200 52 220 42 M172 58 C192 48 198 66 218 56" fill="none" stroke="#C8322B" strokeWidth="10" strokeLinecap="round" />
+          </g>
+          <g transform="translate(470,258)">
+            <ellipse cx="70" cy="78" rx="72" ry="20" fill="#E9C77A" stroke="#1A1713" strokeWidth="4" />
+            <ellipse cx="70" cy="60" rx="66" ry="19" fill="#F0D492" stroke="#1A1713" strokeWidth="4" />
+            <ellipse cx="70" cy="42" rx="60" ry="18" fill="#F6E0AC" stroke="#1A1713" strokeWidth="4" />
+            <rect x="52" y="22" width="34" height="16" rx="3" fill="#F7C815" stroke="#1A1713" strokeWidth="4" />
+          </g>
+        </svg>
+        <div className="art-checker" />
+      </div>
+    </div>
+  );
+}
+
 function Hero() {
   return (
     <header className="hero" id="top">
@@ -99,7 +155,7 @@ function Hero() {
             <span>W</span>
           </div>
           <div className="headline">
-            <span className="script">45 years at the counter</span>
+            <span className="script">The neighborhood favorite</span>
             <span className="big">BIG PLATES,<br /><em>SMALL TOWN</em><br />PRICES.</span>
             <p>Homemade breakfast served hot every morning on East State Street — hash browned, hotcaked, and gravy-smothered since way back.</p>
             <div className="herobtns">
@@ -108,20 +164,22 @@ function Hero() {
             </div>
           </div>
         </div>
-        <div className="hero-photo reveal reveal-delay-2" data-testid="photo-hero-exterior">
-          <img src={dinerExterior} alt="Whitey's Diner glowing on East State Street at sunset" />
-          <div className="photo-label">
-            <span className="script">Come hungry, leave happy</span>
-            <strong>WHITEY'S DINER</strong>
-          </div>
-        </div>
+        <OriginalHeroArtwork />
       </div>
       <div className="facts" data-testid="facts-strip">
-        <div className="wrap">
-          <div className="fact" data-testid="fact-rating"><b>4.6 ★</b><span>871 Google Reviews</span></div>
-          <div className="fact" data-testid="fact-price"><b>$10–20</b><span>Per Person</span></div>
-          <div className="fact" data-testid="fact-hours"><b>6:30–1:30</b><span>Open Daily</span></div>
-          <div className="fact" data-testid="fact-payment"><b>Cash</b><span>Only, Please</span></div>
+        <div className="facts-track">
+          <div className="fact-group">
+            <div className="fact" data-testid="fact-rating"><b>4.6 ★</b><span>871 Google Reviews</span></div>
+            <div className="fact" data-testid="fact-price"><b>$10–20</b><span>Per Person</span></div>
+            <div className="fact" data-testid="fact-hours"><b>6:30–1:30</b><span>Open Daily</span></div>
+            <div className="fact" data-testid="fact-payment"><b>Cash</b><span>Only, Please</span></div>
+          </div>
+          <div className="fact-group" aria-hidden="true">
+            <div className="fact"><b>4.6 ★</b><span>871 Google Reviews</span></div>
+            <div className="fact"><b>$10–20</b><span>Per Person</span></div>
+            <div className="fact"><b>6:30–1:30</b><span>Open Daily</span></div>
+            <div className="fact"><b>Cash</b><span>Only, Please</span></div>
+          </div>
         </div>
       </div>
     </header>
