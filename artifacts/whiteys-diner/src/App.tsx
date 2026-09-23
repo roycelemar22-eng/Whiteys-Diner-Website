@@ -111,8 +111,8 @@ function OriginalHeroArtwork() {
           <path d="M0 84 C150 34 420 32 640 68 L640 236 C420 204 150 206 0 254 Z" fill="#F7C815" />
           <path d="M0 84 C150 34 420 32 640 68 L640 84 C420 48 150 50 0 100 Z" fill="#1A1713" opacity=".85" />
           <path d="M0 238 C150 190 420 188 640 220 L640 236 C420 204 150 206 0 254 Z" fill="#1A1713" opacity=".85" />
-          <text x="320" y="158" textAnchor="middle" fontFamily="Alfa Slab One, Georgia, serif" fontSize="50" fill="#1A1713" letterSpacing="2">WHITEY&apos;S</text>
-          <text x="320" y="212" textAnchor="middle" fontFamily="Alfa Slab One, Georgia, serif" fontSize="50" fill="#1A1713" letterSpacing="2">DINER</text>
+          <text x="320" y="132" textAnchor="middle" fontFamily="Alfa Slab One, Georgia, serif" fontSize="50" fill="#1A1713" letterSpacing="2">WHITEY&apos;S</text>
+          <text x="320" y="179" textAnchor="middle" fontFamily="Alfa Slab One, Georgia, serif" fontSize="50" fill="#1A1713" letterSpacing="2">DINER</text>
           <rect x="0" y="330" width="640" height="26" fill="url(#art-chrome)" />
           <rect x="0" y="356" width="640" height="124" fill="#FFF8E6" />
           <g stroke="#E4DCC4" strokeWidth="2">
