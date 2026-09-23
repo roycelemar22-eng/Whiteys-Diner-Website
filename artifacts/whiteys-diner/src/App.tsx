@@ -54,7 +54,7 @@ function Nav() {
       <div className="topstrip" data-testid="strip-hours">
         <div className="wrap">
           <span><i className="dot" />Open Daily 6:30 AM – 1:30 PM</span>
-          <span><i className="dot" />Cash Only</span>
+          <span className="atm-pulse"><i className="dot" />ATM Inside</span>
           <span className="strip-addr"><i className="dot" />216 E State St, Fremont, OH</span>
         </div>
       </div>
@@ -213,58 +213,220 @@ function WhySection() {
   );
 }
 
+type MenuItem = {
+  name: string;
+  price: string;
+  note?: string;
+  tag?: string;
+};
+
+function MenuCourse({
+  title,
+  subtitle,
+  note,
+  items,
+  testId,
+}: {
+  title: string;
+  subtitle?: string;
+  note?: string;
+  items: MenuItem[];
+  testId: string;
+}) {
+  return (
+    <div className="course" data-testid={testId}>
+      <h3>{title}</h3>
+      {subtitle && <p className="sub">{subtitle}</p>}
+      {note && <p className="course-note">{note}</p>}
+      {items.map((item) => (
+        <div className="item" key={`${title}-${item.name}-${item.price}`}>
+          <span className="nm">
+            {item.name}
+            {item.tag && <span className="tag alt tag-block">{item.tag}</span>}
+            {item.note && <em>{item.note}</em>}
+          </span>
+          <span className="pr">{item.price}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function MenuSection() {
+  const breakfastSpecials: MenuItem[] = [
+    { name: 'Corned Beef Hash & 2 Eggs with Toast', price: '$10.40' },
+    { name: 'Sausage Gravy & Biscuits', price: '$7.65' },
+    { name: 'Pork Chops & Eggs', price: '$13.00' },
+    { name: 'Steak & Eggs', price: '$16.80', tag: 'Hometown Favorite' },
+    { name: 'Country Fried Steak, Eggs & Home Fries', price: '$13.40' },
+  ];
+  const eggs: MenuItem[] = [
+    { name: 'Two Country Fresh Eggs', price: '$5.45', note: 'Includes toast & coffee or hot tea. Extra egg $2.00.' },
+    { name: 'Two Eggs with Ham, Bacon or Sausage', price: '$10.40' },
+    { name: 'One Egg with Ham, Bacon or Sausage', price: '$9.40' },
+    { name: 'Home Fries', price: '$4.50', note: 'A must at Whitey’s.' },
+    { name: 'Trash Potatoes', price: '$11.00' },
+  ];
+  const hotcakes: MenuItem[] = [
+    { name: 'Hotcakes', price: '$8.00' },
+    { name: 'Hotcakes with Two Eggs', price: '$9.35' },
+    { name: 'Hotcakes with Ham or Bacon or Sausage', price: '$11.20' },
+    { name: 'Hotcakes with Eggs and Meat', price: '$15.20' },
+  ];
+  const frenchToast: MenuItem[] = [
+    { name: 'French Toast', price: '$8.00' },
+    { name: 'French Toast with Two Eggs', price: '$9.35' },
+    { name: 'French Toast with Ham or Bacon or Sausage', price: '$11.20' },
+    { name: 'French Toast with Eggs and Meat', price: '$15.20' },
+  ];
+  const omelets: MenuItem[] = [
+    { name: 'Potato with Cheese', price: '$9.30' },
+    { name: 'Veggie with Cheese', price: '$10.40' },
+    { name: 'Cheese', price: '$8.50' },
+    { name: 'Ham', price: '$10.40' },
+    { name: 'Ham & Cheese', price: '$10.95' },
+    { name: 'Sausage', price: '$10.40' },
+    { name: 'Sausage & Cheese', price: '$10.95' },
+    { name: 'Western', price: '$10.95' },
+    { name: 'Western with Cheese', price: '$11.95' },
+    { name: 'Bubba', price: '$12.15' },
+    { name: 'Bubba with Cheese', price: '$13.15' },
+    { name: 'Broccoli & Cheese', price: '$9.50' },
+  ];
+  const rolls: MenuItem[] = [
+    { name: 'Sweet Roll', price: '$2.00' },
+    { name: 'Toast', price: '$1.50' },
+    { name: 'Cinnamon Toast', price: '$2.00' },
+    { name: 'Raisin Toast', price: '$2.00' },
+    { name: 'English Muffin', price: '$1.50' },
+  ];
+  const cereals: MenuItem[] = [
+    { name: 'Oatmeal', price: '$4.00' },
+    { name: 'Grits', price: '$4.00' },
+  ];
+  const sideOrders: MenuItem[] = [
+    { name: 'Corned Beef Hash', price: '$7.90' },
+    { name: 'Bacon', price: '$7.90' },
+    { name: 'Ham', price: '$7.90' },
+    { name: 'Sausage', price: '$7.90' },
+    { name: 'Extra Cheese', price: '$2.00' },
+    { name: 'Peppers', price: '$1.50' },
+    { name: 'Onions', price: '$1.50' },
+    { name: 'Mushrooms', price: '$1.50' },
+    { name: 'Tomatoes', price: '$1.50' },
+    { name: 'Broccoli', price: '$1.50' },
+    { name: 'Jalapenos', price: '$1.50' },
+  ];
+  const juices: MenuItem[] = [
+    { name: 'Orange', price: '$3.00 / $3.50' },
+    { name: 'Apple', price: '$2.00 / $2.25' },
+    { name: 'Tomato', price: '$2.50 / $2.75' },
+  ];
+  const wakeUp: MenuItem[] = [
+    { name: 'Wake Up Sandwich', price: '$10.00', note: 'Ham or sausage or bacon with egg & cheese on a muffin with coffee or juice.' },
+  ];
+  const salads: MenuItem[] = [
+    { name: 'Head Lettuce & Tomato', price: '$3.50' },
+    { name: 'Cottage Cheese', price: '$3.00' },
+    { name: 'Cole Slaw', price: '$3.00' },
+    { name: 'Chicken Chef Salad', price: '$10.50 / $12.50' },
+    { name: 'Ham & Cheese Chef Salad', price: '$9.50 / $11.00' },
+    { name: 'Soup & Salad', price: '$9.50' },
+    { name: 'Applesauce', price: '$3.00' },
+  ];
+  const soups: MenuItem[] = [
+    { name: 'Homemade Vegetable', price: '$4.00 cup / $4.75 bowl' },
+    { name: 'Homemade Chili', price: '$4.50 cup / $5.25 bowl' },
+    { name: 'Soup Of The Day', price: '$4.50 cup / $5.25 bowl' },
+  ];
+  const tastySandwiches: MenuItem[] = [
+    { name: 'Egg & Cheese', price: '$5.50' },
+    { name: 'Hamburger, Plain', price: '$8.50' },
+    { name: 'Hamburger, Deluxe', price: '$9.00' },
+    { name: 'Cheeseburger, Plain', price: '$9.50' },
+    { name: 'Cheeseburger, Deluxe', price: '$10.00' },
+    { name: 'Bacon Burger', price: '$10.00' },
+    { name: 'Bacon Burger, Deluxe', price: '$10.50' },
+    { name: 'Bacon Cheeseburger', price: '$11.00' },
+    { name: 'Bacon Cheeseburger, Deluxe', price: '$11.50' },
+    { name: 'Fried Ham', price: '$8.50' },
+    { name: 'Fried Ham with Egg & Cheese', price: '$9.85' },
+    { name: 'Bacon, Plain', price: '$8.50' },
+    { name: 'BLT on Toast', price: '$9.00' },
+    { name: 'Bacon with Egg and Cheese', price: '$9.85' },
+    { name: 'Sausage, Plain', price: '$8.50' },
+    { name: 'Sausage with Egg & Cheese', price: '$9.85' },
+    { name: 'Breaded Veal', price: '$9.00' },
+    { name: 'Egg with Tomato', price: '$5.00' },
+    { name: 'Chicken Salad', price: '$8.00' },
+    { name: 'Toasted Cheese', price: '$6.00' },
+    { name: 'Broiled Chicken Breast Sandwich with cup of soup', price: '$10.95' },
+    { name: 'Pork Tenderloin Sandwich with cup of soup', price: '$10.95' },
+  ];
+  const lunchSides: MenuItem[] = [
+    { name: 'French Fries', price: '$4.50' },
+    { name: 'Home Fries', price: '$4.50' },
+    { name: 'Onion Rings', price: '$7.00' },
+  ];
+  const dinners: MenuItem[] = [
+    { name: 'Ham Steak', price: '$13.45' },
+    { name: 'Hamburger Steak', price: '$13.45' },
+    { name: 'Baked Veal', price: '$13.45' },
+    { name: 'Perch Dinner', price: 'Market Price' },
+    { name: 'Liver & Onions', price: '$13.45' },
+    { name: 'Chicken Breast', price: '$13.45' },
+    { name: 'Country Fried Steak', price: '$13.45' },
+  ];
+  const beverages: MenuItem[] = [
+    { name: 'Coffee', price: '$2.00' },
+    { name: 'Tea', price: '$1.25' },
+    { name: 'Hot Chocolate', price: '$2.00' },
+    { name: 'Chocolate Milk', price: '$1.50 sm / $2.00 lg' },
+    { name: 'Milk', price: '$1.00 sm / $1.25 lg' },
+    { name: 'Milk Shake', price: '$6.00' },
+    { name: 'Iced Tea (Free Refills)', price: '$2.00' },
+    { name: 'Soft Drinks', price: '$2.50' },
+  ];
+  const desserts: MenuItem[] = [
+    { name: 'Fresh Homemade Pie — A MUST', price: '$4.50' },
+    { name: 'Pie A la Mode', price: '$5.25' },
+    { name: 'Ice Cream', price: '$3.50' },
+    { name: 'Chocolate Sundae', price: '$4.50' },
+    { name: 'Cheesecake Traditional', price: '$4.50' },
+    { name: 'Cheesecake Cherry', price: '$5.00' },
+  ];
+
   return (
     <section className="menu" id="menu" data-testid="section-menu">
       <div className="wrap">
         <div className="menuhead">
           <div>
-            <p className="eyebrow">Served all morning</p>
-            <h2>The Breakfast Menu</h2>
-            <p className="lede">Every plate cooked to order on the flat-top. Eggs your way — over easy, sunny side up, scrambled, or however you like them.</p>
+            <p className="eyebrow">Breakfast · lunch · dinner</p>
+            <h2>The Whitey&apos;s Menu</h2>
+            <p className="lede">The full menu from the counter: eggs, hotcakes, sandwiches, soups, dinners, drinks, and something sweet to finish.</p>
           </div>
-          <div className="menunote" data-testid="menu-note">Cash Only · Prices Subject to Change</div>
+          <div className="menunote atm-ticker" data-testid="menu-note"><span>ATM INSIDE</span><span>Cash Only</span><span>Prices Subject to Change</span></div>
         </div>
         <div className="menugrid">
-          <div className="course" data-testid="menu-category-specials">
-            <h3>Whitey&apos;s Breakfast Specials</h3>
-            <p className="sub">The big ones</p>
-            <div className="item" data-testid="menu-item-steak-eggs">
-              <span className="nm">Steak &amp; Eggs<span className="tag alt tag-block">Hometown Favorite</span><em>Steak with your choice of eggs — over easy, sunny side up, scrambled, and more.</em></span><span className="pr">$24.05</span>
-            </div>
-            <div className="item"><span className="nm">Country Fried Steak, Eggs &amp; Home Fries</span><span className="pr">$17.40</span></div>
-            <div className="item"><span className="nm">Pork Chops &amp; Eggs</span><span className="pr">$16.90</span></div>
-            <div className="item"><span className="nm">Corned Beef Hash &amp; Eggs<em>Includes two eggs and toast.</em></span><span className="pr">$13.50</span></div>
-            <div className="item"><span className="nm">Sausage Gravy &amp; Biscuits</span><span className="pr">$9.10</span></div>
-          </div>
-          <div className="course" data-testid="menu-category-eggs">
-            <h3>Eggs, Etc.</h3>
-            <p className="sub">Diner classics</p>
-            <div className="item"><span className="nm">Home Fries<span className="tag">#1 Most Liked</span><em>A must at Whitey&apos;s.</em></span><span className="pr">$5.85</span></div>
-            <div className="item"><span className="nm">Trash Potatoes<span className="tag alt">#2 Most Liked</span></span><span className="pr">$14.30</span></div>
-            <div className="item"><span className="nm">One Egg</span><span className="pr">$6.35</span></div>
-            <div className="item"><span className="nm">Two Country Fresh Eggs</span><span className="pr">$7.05</span></div>
-            <div className="item"><span className="nm">One Egg with Ham, Bacon or Sausage</span><span className="pr">$12.20</span></div>
-            <div className="item"><span className="nm">Two Eggs with Ham, Bacon or Sausage</span><span className="pr">$13.50</span></div>
-          </div>
-          <div className="course" data-testid="menu-category-hotcakes">
-            <h3>Hotcakes</h3>
-            <p className="sub">Off the griddle</p>
-            <div className="item"><span className="nm">Hotcakes</span><span className="pr">$10.40</span></div>
-            <div className="item"><span className="nm">Hotcakes with Two Eggs</span><span className="pr">$12.15</span></div>
-            <div className="item"><span className="nm">Hotcakes with Ham, Bacon or Sausage</span><span className="pr">$14.55</span></div>
-            <div className="item"><span className="nm">Hotcakes, Eggs &amp; Meat</span><span className="pr">$19.75</span></div>
-          </div>
-          <div className="course" data-testid="menu-category-french-toast">
-            <h3>French Toast</h3>
-            <p className="sub">Thick cut</p>
-            <div className="item"><span className="nm">French Toast</span><span className="pr">$10.40</span></div>
-            <div className="item"><span className="nm">French Toast with Two Eggs</span><span className="pr">$12.15</span></div>
-            <div className="item"><span className="nm">French Toast with Ham, Bacon or Sausage</span><span className="pr">$14.55</span></div>
-            <div className="item"><span className="nm">French Toast, Eggs &amp; Meat</span><span className="pr">$19.75</span></div>
-          </div>
+          <MenuCourse title="Whitey’s Breakfast Specials" subtitle="The big ones" items={breakfastSpecials} testId="menu-category-specials" />
+          <MenuCourse title="Eggs, Etc." subtitle="Includes toast & coffee or hot tea · extra egg $2.00" items={eggs} testId="menu-category-eggs" />
+          <MenuCourse title="Hotcakes" subtitle="Includes syrup & coffee or hot tea" items={hotcakes} testId="menu-category-hotcakes" />
+          <MenuCourse title="French Toast" subtitle="Includes syrup & coffee or hot tea" items={frenchToast} testId="menu-category-french-toast" />
+          <MenuCourse title="Omelets" subtitle="Includes toast & coffee or hot tea" items={omelets} testId="menu-category-omelets" />
+          <MenuCourse title="Wake Up Sandwiches" subtitle="A quick start" items={wakeUp} testId="menu-category-wake-up" />
+          <MenuCourse title="Rolls...etc." items={rolls} testId="menu-category-rolls" />
+          <MenuCourse title="Cereals" items={cereals} testId="menu-category-cereals" />
+          <MenuCourse title="Side Orders" items={sideOrders} testId="menu-category-side-orders" />
+          <MenuCourse title="Juices" subtitle="Small / large" items={juices} testId="menu-category-juices" />
+          <MenuCourse title="Salads" items={salads} testId="menu-category-salads" />
+          <MenuCourse title="Soups" subtitle="Cup / bowl" items={soups} testId="menu-category-soups" />
+          <MenuCourse title="Tasty Sandwiches" subtitle="Make it a platter for $5.00 more · 1/2 fries & 1 cold side" items={tastySandwiches} testId="menu-category-tasty-sandwiches" />
+          <MenuCourse title="Lunch Side Orders" items={lunchSides} testId="menu-category-lunch-sides" />
+          <MenuCourse title="Dinner" subtitle="Includes potatoes, vegetable, choice of cold side" items={dinners} testId="menu-category-dinner" />
+          <MenuCourse title="Beverages" items={beverages} testId="menu-category-beverages" />
+          <MenuCourse title="Desserts" items={desserts} testId="menu-category-desserts" />
         </div>
-        <p className="lede menu-foot">Lunch is on too — burgers, sandwiches and daily specials off the board. Call <a href="tel:+14193349183" data-testid="link-menu-phone">(419) 334-9183</a> to hear what&apos;s cooking today.</p>
+        <p className="lede menu-foot">Items marked with an asterisk contain eggs. Call <a href="tel:+14193349183" data-testid="link-menu-phone">(419) 334-9183</a> to hear what&apos;s cooking today.</p>
       </div>
     </section>
   );
