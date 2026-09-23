@@ -54,7 +54,7 @@ function Nav() {
       <div className="topstrip" data-testid="strip-hours">
         <div className="wrap">
           <span><i className="dot" />Open Daily 6:30 AM – 1:30 PM</span>
-          <span><i className="dot" />Cash Only <small className="atm-chip">ATM Inside</small></span>
+          <span><i className="dot" />Cash Only</span>
           <span className="strip-addr"><i className="dot" />216 E State St, Fremont, OH</span>
         </div>
       </div>
@@ -172,13 +172,13 @@ function Hero() {
             <div className="fact" data-testid="fact-rating"><b>4.6 ★</b><span>871 Google Reviews</span></div>
             <div className="fact" data-testid="fact-price"><b>$10–20</b><span>Per Person</span></div>
             <div className="fact" data-testid="fact-hours"><b>6:30–1:30</b><span>Open Daily</span></div>
-            <div className="fact" data-testid="fact-payment"><b>Cash</b><span>Only, Please <small className="atm-chip">ATM Inside</small></span></div>
+            <div className="fact" data-testid="fact-payment"><b>Cash</b><span>Only, Please</span></div>
           </div>
           <div className="fact-group" aria-hidden="true">
             <div className="fact"><b>4.6 ★</b><span>871 Google Reviews</span></div>
             <div className="fact"><b>$10–20</b><span>Per Person</span></div>
             <div className="fact"><b>6:30–1:30</b><span>Open Daily</span></div>
-            <div className="fact"><b>Cash</b><span>Only, Please <small className="atm-chip">ATM Inside</small></span></div>
+            <div className="fact"><b>Cash</b><span>Only, Please</span></div>
           </div>
         </div>
       </div>
@@ -405,7 +405,7 @@ function MenuSection() {
             <h2>The Whitey&apos;s Menu</h2>
             <p className="lede">The full menu from the counter: eggs, hotcakes, sandwiches, soups, dinners, drinks, and something sweet to finish.</p>
           </div>
-          <div className="menunote atm-ticker" data-testid="menu-note"><span>ATM INSIDE</span><span>Cash Only</span><span>Prices Subject to Change</span></div>
+          <div className="menunote" data-testid="menu-note">Cash Only · Prices Subject to Change</div>
         </div>
         <div className="menugrid">
           <MenuCourse title="Whitey’s Breakfast Specials" subtitle="The big ones" items={breakfastSpecials} testId="menu-category-specials" />
@@ -537,7 +537,7 @@ function VisitSection() {
               <CreditCard aria-hidden="true" />
               <span><b>Payment</b><span style={{ fontWeight: 600 }}>Cash only — no cards</span></span>
             </div>
-            <div className="cashnote" data-testid="cash-note"><span className="atm-chip atm-chip-light">ATM Inside</span> Please bring cash · No reservations taken</div>
+            <div className="cashnote" data-testid="cash-note">Please bring cash · No reservations taken</div>
           </div>
           <div className="vcard">
             <h3>Hours</h3>
