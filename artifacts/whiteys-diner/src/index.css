@@ -114,6 +114,13 @@
 .topstrip .wrap { display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap; text-align: center; }
 .topstrip span { display: inline-flex; align-items: center; gap: .5rem; }
 .topstrip .dot { width: 5px; height: 5px; border-radius: 50%; background: hsl(var(--secondary)); }
+.atm-chip {
+  display: inline-block; margin-left: .2rem; padding: .18rem .42rem; border-radius: 999px;
+  background: hsl(var(--primary)); color: hsl(var(--card)); font-size: .56rem;
+  line-height: 1; letter-spacing: .12em; text-transform: uppercase; font-weight: 800;
+  animation: atm-pulse 1.8s ease-in-out infinite;
+}
+@keyframes atm-pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.06); opacity: .8; } }
 .nav {
   position: sticky; top: 0; z-index: 50; background: rgba(255,253,246,.92);
   backdrop-filter: blur(14px); border-bottom: 1px solid hsl(var(--border));

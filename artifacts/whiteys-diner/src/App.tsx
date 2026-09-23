@@ -54,7 +54,7 @@ function Nav() {
       <div className="topstrip" data-testid="strip-hours">
         <div className="wrap">
           <span><i className="dot" />Open Daily 6:30 AM – 1:30 PM</span>
-          <span><i className="dot" />Cash Only</span>
+          <span><i className="dot" />Cash Only <small className="atm-chip">ATM Inside</small></span>
           <span className="strip-addr"><i className="dot" />216 E State St, Fremont, OH</span>
         </div>
       </div>
