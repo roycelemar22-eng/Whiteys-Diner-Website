@@ -1,0 +1,1 @@
+- [GitHub authentication recovery](github-auth.md) — healthy integration status may disagree with workspace git credentials; use the actual push result.
